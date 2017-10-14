@@ -1,0 +1,34 @@
+import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Map;
+
+public class qucks {
+    public static void main(String[] Args){
+
+    Scanner reader = new Scanner(System.in);
+    String number = reader.nextLine();
+    Map<String, String> transfer = new Hashmap<String, String>();
+    transfer.put("1", "One");
+    transfer.put("2", "Two");
+    transfer.put("3", "Three");
+    transfer.put("4", "Four");
+    transfer.put("5", "Five");
+    transfer.put("6", "Six");
+    transfer.put("7", "Seven");
+    transfer.put("8", "Eight");
+    transfer.put("9", "Nine");
+
+    }
+
+    public class placeValue(String x) {
+        char[] arrayO = new char[x.length()];
+        for(int i=0; i < x.length(); i++){
+        arrayO[i]= x.charAt(i);
+        }
+
+        if(x.length() == 1) {
+            System.out.println();
+        }
+    }
+}
+
