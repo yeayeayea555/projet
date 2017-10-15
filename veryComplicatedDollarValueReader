@@ -1,0 +1,157 @@
+import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.ArrayList;
+
+public class QuocsLearningHow2CountProgram {
+    public static void main(String[] Args) {
+
+        Scanner reader = new Scanner(System.in);
+        String number = reader.nextLine();
+        placeValue(number);
+
+
+    }
+
+    public static void placeValue(String x) {
+
+        Map<String, String> singleN = new HashMap<String, String>();
+        singleN.put("0", "");
+        singleN.put("1", "One");
+        singleN.put("2", "Two");
+        singleN.put("3", "Three");
+        singleN.put("4", "Four");
+        singleN.put("5", "Five");
+        singleN.put("6", "Six");
+        singleN.put("7", "Seven");
+        singleN.put("8", "Eight");
+        singleN.put("9", "Nine");
+
+        Map<String, String> tenN = new HashMap<String, String>();
+        tenN.put("2", "Twenty");
+        tenN.put("3", "Thirty");
+        tenN.put("4", "Forty");
+        tenN.put("5", "Fifty");
+        tenN.put("6", "Sixty");
+        tenN.put("7", "Seventy");
+        tenN.put("8", "Eighty");
+        tenN.put("9", "Ninety");
+
+        Map<String, String> tenNs = new HashMap<String, String>();
+        tenNs.put("0", "Ten");
+        tenNs.put("1", "Eleven");
+        tenNs.put("2", "Twelve");
+        tenNs.put("3", "Thirteen");
+        tenNs.put("4", "Fourteen");
+        tenNs.put("5", "Fifteen");
+        tenNs.put("6", "Sixteen");
+        tenNs.put("7", "Seventeen");
+        tenNs.put("8", "Eighteen");
+        tenNs.put("9", "Nineteen");
+
+        ArrayList arrayO = new ArrayList();
+        for (int a = 0; a < x.length(); a++) {
+            arrayO.add(Character.toString(x.charAt(a)));
+
+        }
+
+        if (!(arrayO.contains("."))) {
+            arrayO.add(".");
+        }
+        if (arrayO.get(0).equals(".")) {
+            arrayO.add(0, "0");
+            arrayO.add(0, "0");
+            arrayO.add(0, "0");
+        } else if (arrayO.get(1).equals(".")) {
+            arrayO.add(0, "0");
+            arrayO.add(0, "0");
+        } else if (arrayO.get(2).equals(".")) {
+            arrayO.add(0, "0");
+        }
+
+        if (arrayO.size() == 4) {
+            arrayO.add("0");
+            arrayO.add("0");
+        } else if (arrayO.size() == 5) {
+            arrayO.add("0");
+        }
+
+        if(!(arrayO.size() == 6)){
+            System.out.print("not within range brody");
+            return;
+        }
+
+        if (arrayO.get(0).equals("0") && arrayO.get(1).equals("0") && arrayO.get(2).equals("0") && arrayO.get(4).equals("0") && arrayO.get(5).equals("0")) {
+            System.out.println("Zero dollars wtf...");
+        }
+
+        //HUNDREDS
+        if (!(arrayO.get(0).equals("0")) && arrayO.get(3).equals(".")) {
+            System.out.print(singleN.get(arrayO.get(0)) + " Hundred" + ((arrayO.get(1).equals("0")) ? "" : " " + tenN.get(arrayO.get(1))) + ((arrayO.get(2).equals("0")) ? "" : " " + singleN.get(arrayO.get(2))) + " dollars");
+            //CENT TACTIC START
+            if (arrayO.get(4).equals("1")) {
+                System.out.print(" " + tenNs.get(arrayO.get(5)));
+                System.out.print(" Cents");
+            } else {
+                System.out.print((arrayO.get(4).equals("0")) ? (" " + singleN.get(arrayO.get(5))) : (" " + tenN.get(arrayO.get(4)) + " " + singleN.get(arrayO.get(5))));
+                System.out.print((arrayO.get(4).equals("0") && arrayO.get(5).equals("0")) ? "" : " Cents");
+            }//CENT TACTIC END
+
+            //TENS
+        } else if (!(arrayO.get(1).equals("0"))) {
+            if (arrayO.get(1).equals("1")) {
+                System.out.print(tenNs.get(arrayO.get(2)));
+                System.out.print(" dollars");
+
+                //CENT TACTIC START
+                if (arrayO.get(4).equals("1")) {
+                    System.out.print(" " + tenNs.get(arrayO.get(5)));
+                    System.out.print(" Cents");
+                } else {
+                    System.out.print((arrayO.get(4).equals("0")) ? (" " + singleN.get(arrayO.get(5))) : (" " + tenN.get(arrayO.get(4)) + " " + singleN.get(arrayO.get(5))));
+                    System.out.print((arrayO.get(4).equals("0") && arrayO.get(5).equals("0")) ? "" : " Cents");
+                }//CENT TACTIC END
+
+            } else {
+                System.out.print(tenN.get(arrayO.get(1)) + " " + singleN.get(arrayO.get(2)));
+                System.out.print(" dollars");
+
+                //CENT TACTIC START
+                if (arrayO.get(4).equals("1")) {
+                    System.out.print(" " + tenNs.get(arrayO.get(5)));
+                    System.out.print(" Cents");
+                } else {
+                    System.out.print((arrayO.get(4).equals("0")) ? (" " + singleN.get(arrayO.get(5))) : (" " + tenN.get(arrayO.get(4)) + " " + singleN.get(arrayO.get(5))));
+                    System.out.print((arrayO.get(4).equals("0") && arrayO.get(5).equals("0")) ? "" : " Cents");
+                }//CENT TACTIC END
+
+            }
+
+            //ONES
+        } else if (!(arrayO.get(2).equals("0"))) {
+            System.out.print(singleN.get(arrayO.get(2)));
+            System.out.print(" dollars");
+
+            //CENT TACTIC START
+            if (arrayO.get(4).equals("1")) {
+                System.out.print(" " + tenNs.get(arrayO.get(5)));
+                System.out.print(" Cents");
+            } else {
+                System.out.print((arrayO.get(4).equals("0")) ? (" " + singleN.get(arrayO.get(5))) : (" " + tenN.get(arrayO.get(4)) + " " + singleN.get(arrayO.get(5))));
+                System.out.print((arrayO.get(4).equals("0") && arrayO.get(5).equals("0")) ? "" : " Cents");
+            }//CENT TACTIC END
+
+        }
+        //FINAL CENT TACTIC BOIS
+        if (!(arrayO.get(4).equals("0") && arrayO.get(5).equals("0")) && arrayO.get(0).equals("0") && arrayO.get(1).equals("0") && arrayO.get(2).equals("0")) {
+            if (arrayO.get(4).equals("1")) {
+                System.out.print(tenNs.get(arrayO.get(5)));
+                System.out.print(" Cents");
+            } else {
+                System.out.print((arrayO.get(4).equals("0")) ? (singleN.get(arrayO.get(5))) : (tenN.get(arrayO.get(4)) + " " + singleN.get(arrayO.get(5))));
+                System.out.print((arrayO.get(4).equals("0") && arrayO.get(5).equals("0")) ? "" : " Cents");
+            }
+
+        }
+    }
+}
