@@ -28,6 +28,7 @@ public class QuocsLearningHow2CountProgram {
         singleN.put("9", "Nine");
 
         Map<String, String> tenN = new HashMap<String, String>();
+        tenN.put("0", "");
         tenN.put("2", "Twenty");
         tenN.put("3", "Thirty");
         tenN.put("4", "Forty");
@@ -87,7 +88,7 @@ public class QuocsLearningHow2CountProgram {
 
         //HUNDREDS
         if (!(arrayO.get(0).equals("0")) && arrayO.get(3).equals(".")) {
-            System.out.print(singleN.get(arrayO.get(0)) + " Hundred" + ((arrayO.get(1).equals("0")) ? "" : " " + tenN.get(arrayO.get(1))) + ((arrayO.get(2).equals("0")) ? "" : " " + singleN.get(arrayO.get(2))) + " dollars");
+            System.out.print(singleN.get(arrayO.get(0)) + " Hundred" + ((arrayO.get(1).equals("1")) ? " " + tenNs.get(arrayO.get(2)) : " " + tenN.get(arrayO.get(1))) + ((arrayO.get(1).equals("1")) ? "" : " " + singleN.get(arrayO.get(2))) + " dollars");
             //CENT TACTIC START
             if (arrayO.get(4).equals("1")) {
                 System.out.print(" " + tenNs.get(arrayO.get(5)));
